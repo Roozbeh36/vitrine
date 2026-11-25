@@ -1,0 +1,83 @@
+@import "tailwindcss";
+@import "@fontsource/instrument-sans/latin-400.css";
+@import "@fontsource/instrument-sans/latin-500.css";
+@import "@fontsource/instrument-sans/latin-600.css";
+@import "@fontsource/instrument-serif/latin-400.css";
+@import "@fontsource/instrument-serif/latin-400-italic.css";
+
+@theme {
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+
+  --color-paper: #f3f1ec;
+  --color-paper-2: #e6e2da;
+  --color-ink: #161616;
+  --color-muted: #6e6a64;
+  --color-faint: #8a857d;
+  --color-line: #d8d3cb;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+.board {
+  columns: 2;
+  column-gap: 1rem;
+}
+
+.board-item {
+  break-inside: avoid;
+  margin-bottom: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .board {
+    columns: 3;
+    column-gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .board {
+    columns: 4;
+  }
+}
+
+.pin-media {
+  transition: opacity 250ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .pin-media {
+  opacity: 0.9;
+}
